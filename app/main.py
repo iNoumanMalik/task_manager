@@ -1,0 +1,9 @@
+from fastapi import FastAPI
+from .database import engine,Base
+from .routes import router
+
+Base.metadata.create_all(bing=engine)
+
+app = FastAPI(title="Task Management API")
+
+app.include_router(router)
