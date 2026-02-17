@@ -9,7 +9,7 @@ engine = create_engine(
     connect_args={"check_same_thread":False}
 )
 
-SessionLocal = sessionmaker(bind = engine, autoflush=False,autoCommit=False)
+SessionLocal = sessionmaker(bind = engine, autoflush=False,autocommit=False)
 
 # Foundation of ORM Models
 # Keep track of all models

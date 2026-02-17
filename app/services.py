@@ -37,7 +37,11 @@ def get_tasks(
             | (models.Task.description.contains(search))
         )
 
-    if sort_by in ["due_date", "created_at"]:
+    allowed_sort_fields = ["due_date", "created_at"]
+
+    if sort_by not in allowed_sort_fields:
+        sort_by = "created_at"
+        
         query = query.order_by(getattr(models.Task, sort_by))
 
     return query.offset(offset).limit(limit).all()

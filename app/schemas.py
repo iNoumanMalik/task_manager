@@ -1,5 +1,5 @@
 # schema control input validation, format response and data rules
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator,ConfigDict
 from datetime import datetime
 from typing import Optional # used to declare that a variable or field can either be of a certain type or None.
 from .models import TaskStatus, TaskPriority
@@ -37,10 +37,18 @@ class TaskUpdate(TaskBase):
     priority: Optional[TaskPriority] = None
     due_date: Optional[datetime] = None
 
-class TaskResponse(TaskBase):
+
+class TaskResponse(BaseModel):
     id: int
+    title: str
+    description: str | None
+    status: str
+    priority: str
+    due_date: datetime | None
     created_at: datetime
     updated_at: datetime
 
-    class Config:  # the translator that tells Pydantic how to read ORM objects and turn them into JSON.
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
+
+    # class Config:  # the translator that tells Pydantic how to read ORM objects and turn them into JSON.
+    #     from_attributes = True

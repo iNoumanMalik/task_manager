@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from .database import get_db
+from typing import List
 from . import schemas, services
 
 
@@ -15,7 +16,7 @@ router = APIRouter(prefix="/tasks", tags=["Tasks"])
 def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
     return services.create_task(db,task)
 
-@router.get("/",response_model=schemas.TaskResponse)
+@router.get("/",response_model=List[schemas.TaskResponse])
 def get_tasks(
     status: schemas.TaskStatus = None,
     priority: schemas.TaskPriority = None,
