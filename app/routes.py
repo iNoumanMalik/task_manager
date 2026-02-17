@@ -31,7 +31,7 @@ def get_tasks(
 
 @router.get("/{task_id}",response_model=schemas.TaskResponse)
 def get_task(task_id: int, db:Session = Depends(get_db)):
-    task =  services.get_tasks(db,task_id)
+    task =  services.get_task(db,task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
     return task
