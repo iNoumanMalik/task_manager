@@ -147,7 +147,8 @@ Supports:
 `DELETE /tasks/{task_id}`
 
 ### Run Test
-`python3 -m pytest -s`
+
+python3 -m pytest -s
 ---
 
 ## 🎯 Goals of This Project
