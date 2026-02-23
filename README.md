@@ -1,6 +1,6 @@
 # Task Management System API
 
-A professional backend Task Management System built with **FastAPI**, **Pydantic**, **SQLAlchemy**, and **SQLite**.
+A professional backend Task Management System built with **FastAPI**, **Pydantic**, **SQLAlchemy**, **Pytest** and **SQLite**.
 
 This project demonstrates clean architecture, proper validation, database persistence, filtering, pagination, and scalable backend design suitable for real-world applications.
 
@@ -58,6 +58,9 @@ task_manager/
 │   ├── schemas.py
 │   ├── services.py
 │   └── routes.py
+├── tests/
+│   ├── confest.py
+│   ├── test_tasks.py
 │
 └── requirements.txt
 ```
@@ -77,6 +80,7 @@ task_manager/
 * FastAPI (API framework)
 * Pydantic (Validation & schemas)
 * SQLAlchemy (ORM)
+* Pytest
 * SQLite (Database)
 
 ---
@@ -141,6 +145,9 @@ Supports:
 ### Delete Task
 
 `DELETE /tasks/{task_id}`
+
+### Run Test
+python3 -m pytest -s
 
 ---
 
